@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import MenuIcon from "@mui/icons-material/Menu";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import UploadIcon from "@mui/icons-material/Upload";
+import UploadButton from '../UploadButton';
 const BoxMenu = () => {
   const flexCenter = {
     display: "flex",
@@ -52,9 +52,7 @@ const BoxMenu = () => {
           </IconButton>
         </Grid>
         <Grid item sx={flexEnd}>
-          <IconButton sx={actionButton} size="small">
-            <UploadIcon />
-          </IconButton>
+          <UploadButton />
         </Grid>
       </Grid>
     </>
