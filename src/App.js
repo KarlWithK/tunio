@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react";
-
+import { SketchPicker } from "react-color";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import SoundPlayer from "./components/SoundPlayer";
 import BoxMenu from "./components/BoxMenu";
+import { color } from "@mui/system";
 function App() {
+  const [picker, setPicker] = useState("#FFFFFF");
+  const [showColorpicker, setShowcolorpicker] = useState(true);
+  const handleChangeComplete = (color) => {
+    setPicker(color.hex);
+  };
   const flexCenter = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   };
+  const pickerStyle = {
+    display: `${showColorpicker ? "inline" : "none"}`,
+    position: "absolute",
+    top: "150px",
+    left: "100px",
+    width:'300px'
+  };
+  console.log(showColorpicker);
   return (
     <Box>
       <Grid
@@ -24,7 +38,7 @@ function App() {
           <img src="/logo.png" width="50" />
         </Grid>
         <Grid item sx={flexCenter}>
-          <SoundPlayer />
+          <SoundPlayer picker={picker} />
         </Grid>
         <Grid item sx={flexCenter}>
           <BoxMenu />
@@ -32,6 +46,10 @@ function App() {
 			<ButtonPlayer/> */}
         </Grid>
       </Grid>
+
+      <div style={pickerStyle}>
+        <SketchPicker color={picker} onChangeComplete={handleChangeComplete} />
+      </div>
     </Box>
   );
 }
