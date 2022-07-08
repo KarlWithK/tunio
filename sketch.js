@@ -28,7 +28,6 @@ function setup() {
 
 function draw() {
   if (img) {
-    image(img, 0, 0, width+10, height+10 )
     bgIsLoaded = true;
     stroke(colorPicker.color());
     strokeWeight(5);
@@ -48,7 +47,7 @@ function draw() {
       //rotate background image slightly to make it look like it's popping out
       rotate(random(-0.2, 0.2));
     }
-
+    image(img, 0, 0, width+10, height+10 )
     pop();
 
     var wave = fft.waveform();
