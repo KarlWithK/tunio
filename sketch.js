@@ -56,8 +56,10 @@ function draw() {
     for (var t = -1; t <= 1; t += 2) {
       beginShape();
       for (var i = 0; i <= 180; i++) {
+        //create index that maps the for loop variable to the index of the wave we want
         var index = floor(map(i, 0, 180, 0, wave.length - 1));
-        //last two numbers are min and max radius of circle
+
+        //map the radius of the circle to the waveform
         var r = map(wave[index], -1, 1, 150, 350);
 
         var x = r * sin(i) * t;
@@ -110,8 +112,7 @@ function handleFile(file) {
 //creating a particle object
 class Particle {
   constructor() {
-    //define particle position as a vector
-    //need to multiply by radius (average of min + max radius) of waveform to place it at the perimeter
+    //multiply by radius (average of min + max radius) of waveform to place it at the perimeter
     this.pos = p5.Vector.random2D().mult(250);
     this.vel = createVector(0, 0);
     //acceleration vector should have same direction as position vector
@@ -125,7 +126,7 @@ class Particle {
   update(cond) {
     this.vel.add(this.acc);
     this.pos.add(this.vel);
-    // if frequency is greater than 230, move particles faster
+  
     if (cond) {
       this.vel.add(this.acc);
       this.vel.add(this.acc);
