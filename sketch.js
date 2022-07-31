@@ -47,7 +47,7 @@ function draw() {
       //rotate background image slightly to make it look like it's popping out
       rotate(random(-0.2, 0.2));
     }
-    image(img, 0, 0, width+10, height+10 )
+    image(img, 0, 0, width + 10, height + 10 )
     pop();
 
     var wave = fft.waveform();
@@ -86,6 +86,7 @@ function draw() {
   }
 }
 
+// function to pause or play song when mouse is clicked
 function mouseClicked() {
   if (song.isPlaying()) {
     song.pause();
@@ -146,6 +147,7 @@ class Particle {
     }
   }
 
+  // function to display particles
   show() {
     noStroke();
     fill(colorPicker.color());
